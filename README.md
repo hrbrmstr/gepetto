@@ -12,6 +12,10 @@ It requires a recent installation of [Node.js](https://nodejs.org/en/) and [npm]
 
 ## Installation
 
+    npm install https://gitlab.com/hrbrmstr/gepetto.git --global 
+
+or:
+
     git clone git@gitlab.com/hrbrmstr/gepetto
     cd gepetto
     npm install [-g] # use -g for global installation which may require sudo on some systems
