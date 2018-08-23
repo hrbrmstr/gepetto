@@ -305,14 +305,14 @@
       "integrity": "sha512-schtQkXg3A5gTG0fA8Dq/DpEHYL/adID9IsC0wmaK+j8x20z455du466zx0hZOO/uPikUT9tIdBWuK1JrDo9hg==",
       "requires": {
         "debug": "3.1.0",
-        "moment": "2.22.1",
+        "moment": "2.19.1",
         "tough-cookie": "2.3.3",
         "uuid": "3.1.0"
       },
       "dependencies": {
         "moment": {
           "version": "2.19.1",
-          "resolved": "https://registry.npmjs.org/moment/-/moment-2.22.1.tgz",
+          "resolved": "https://registry.npmjs.org/moment/-/moment-2.19.1.tgz",
           "integrity": "sha1-VtoaLRy/AdOLfhr8McELz6GSkWc="
         }
       }
@@ -1223,6 +1223,15 @@
         "p-finally": "^1.0.0"
       }
     },
+    "path": {
+      "version": "0.12.7",
+      "resolved": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
+      "integrity": "sha1-1NwqUGxM4hl+tIHr/NWzbAFAsQ8=",
+      "requires": {
+        "process": "^0.11.1",
+        "util": "^0.10.3"
+      }
+    },
     "path-is-absolute": {
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz",
@@ -1291,6 +1300,11 @@
       "version": "1.1.2",
       "resolved": "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.1.2.tgz",
       "integrity": "sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ="
+    },
+    "process": {
+      "version": "0.11.10",
+      "resolved": "https://registry.npmjs.org/process/-/process-0.11.10.tgz",
+      "integrity": "sha1-czIwDoQBYb2j5podHZGn1LwW8YI="
     },
     "process-nextick-args": {
       "version": "2.0.0",
@@ -1702,6 +1716,14 @@
           "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz",
           "integrity": "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
         }
+      }
+    },
+    "util": {
+      "version": "0.10.4",
+      "resolved": "https://registry.npmjs.org/util/-/util-0.10.4.tgz",
+      "integrity": "sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==",
+      "requires": {
+        "inherits": "2.0.3"
       }
     },
     "util-deprecate": {

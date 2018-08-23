@@ -17,6 +17,7 @@
     "install": "node ./node_modules/puppeteer/install.js"
   },
   "dependencies": {
+    "acorn": "^5.7.1",
     "eslint": "^5.4.0",
     "hapi": "^17.5.3",
     "hapi-response-utilities": "^1.0.1",
@@ -25,6 +26,7 @@
     "lout": "^11.1.0",
     "moment": "^2.22.2",
     "p-timeout": "~2.0.1",
+    "path": "^0.12.7",
     "puppeteer": "~1.7.0",
     "puppeteer-har": "~1.0.2",
     "vision": "^5.3.3"

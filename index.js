@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const hapi = require('hapi')
+const Path = require('path')
 const puppeteer = require('puppeteer')
 
 // our render helpers
@@ -63,7 +64,8 @@ const init = async () => {
     method: 'GET',
     path: '/',
     handler: function(req, h) {
-      return(h.file('index.html'))
+      h.file
+      return(h.file('./index.html'))
     }
   })
 
