@@ -13,7 +13,7 @@
     "url": "https://gitlab.com/hrbrmstr/gepetto/issues"
   },
   "scripts": {
-    "start": "node start",
+    "start": "node index",
     "install": "node ./node_modules/puppeteer/install.js"
   },
   "dependencies": {

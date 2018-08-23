@@ -90,6 +90,67 @@ const init = async () => {
     }
   })
 
+  // Just go to a URL
+  server.route({
+    method: 'GET',
+    path: '/goto',
+    handler: async function(req, h) {
+      return(await render.goto(req, h, page))
+    }
+  })
+
+  // Get page metrics
+  server.route({
+    method: 'GET',
+    path: '/page_metrics',
+    handler: async function(req, h) {
+      return(await page.metrics())
+    }
+  })
+
+  // Get page title
+  server.route({
+    method: 'GET',
+    path: '/page_title',
+    handler: async function(req, h) {
+      return({ title: await page.title() })
+    }
+  })
+
+  // Get page url
+  server.route({
+    method: 'GET',
+    path: '/page_url',
+    handler: async function(req, h) {
+      return({ url : await page.url() })
+    }
+  })
+
+  // Apply a CSS Selector and return the outerHtml
+  server.route({
+    method: 'GET',
+    path: '/select',
+    handler: async function(req, h) {
+      const selector = req.query.selector
+      const element = await page.$eval(selector, el => el.outerHTML)
+      return(element ? element : '<html></html>')
+    }
+  })
+
+  // Apply a CSS Selector and return the outerHtml
+  server.route({
+    method: 'GET',
+    path: '/select_all',
+    handler: async function(req, h) {
+      const selector = req.query.selector
+      const els = await page.$$(selector)
+      const elements = await page.$$eval(selector, nodes => Array.prototype.reduce.call(nodes, (html, node) => {
+        return(html + (node.outerHTML || node.nodeValue))
+      }))
+      return(elements ? elements : '<html></html>')
+    }
+  })
+
   // HTML renderer
   server.route({
     method: 'GET',
