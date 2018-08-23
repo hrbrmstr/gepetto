@@ -24,17 +24,17 @@ This will grab all the dependencies and also download a module-copy of Chromium 
 
 If you only performed a local installation, then you can fire up `gepetto` in the module directory with:
 
-    node index
+    $ node index
     🚀 Launch browser!
     👍 gepetto running on: http://localhost:3000
 
 If you already have a service running on TCP port 3000, then you can change the port `gepetto` uses via:
 
-    PORT=#### node index
+    $ PORT=#### node index
 
 If you performed a global installation, you now have a `gepetto` command on your `PATH` and can just do:
 
-    gepetto
+    $ gepetto
 
 or:
 
