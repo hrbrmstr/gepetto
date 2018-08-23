@@ -54,6 +54,7 @@ const init = async () => {
   ])
   
   server.events.on('stop', () => {
+    console.log('🛑 Server stopping & shutting down Headless Chrome')
     process.exit(0)
   })
 
