@@ -1,13 +1,13 @@
 {
   "name": "gepetto",
   "description": "ScrapingHub Splash-like REST API for Headless Chrome",
-  "version": "1.0.0",
-  "author": { 
-    "name" : "hrbrmstr",
-    "url" : "https://rud.is/"
+  "version": "0.1.0",
+  "author": {
+    "name": "hrbrmstr",
+    "url": "https://rud.is/"
   },
   "main": "index.js",
-  "license": "(MIT OR Apache-2.0)" ,
+  "license": "(MIT OR Apache-2.0)",
   "homepage": "https://gitlab.com/hrbrmstr/gepetto",
   "bugs": {
     "url": "https://gitlab.com/hrbrmstr/gepetto/issues"
@@ -20,13 +20,17 @@
     "eslint": "^5.4.0",
     "hapi": "^17.5.3",
     "hapi-response-utilities": "^1.0.1",
+    "hapi-swagger": "^9.1.1",
     "inert": "^5.1.0",
+    "lout": "^11.1.0",
+    "moment": "^2.22.2",
     "p-timeout": "~2.0.1",
     "puppeteer": "~1.7.0",
-    "puppeteer-har": "~1.0.2"
+    "puppeteer-har": "~1.0.2",
+    "vision": "^5.3.3"
   },
   "repository": "gitlab:hrbrmstr/gepetto",
-  "bin" : { 
-    "gepetto" : "./index.js" 
+  "bin": {
+    "gepetto": "./index.js"
   }
 }

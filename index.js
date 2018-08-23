@@ -37,8 +37,21 @@ const init = async () => {
   await page.setCacheEnabled(false)
   await page.setRequestInterception(true)
 
-  await server.register(require('inert'))
-  await server.register(require('hapi-response-utilities'))
+  await server.register([
+    require('hapi-response-utilities'),
+    require('vision'), 
+    require('inert'), 
+    {
+      plugin: require('hapi-swagger'), 
+      options: { 
+        info: { 
+          title: 'gepetto API Documentation', 
+          description: 'gepetto is a lightweight REST API interface to Headless Chrome',
+          version: '0.1.0' 
+        } 
+      } 
+    } 
+  ])
   
   server.events.on('stop', () => {
     process.exit(0)
@@ -57,6 +70,10 @@ const init = async () => {
   server.route({
     method: 'GET',
     path: '/_stop',
+    config: {
+      description: 'Stop the gepetto service and shudown Headless Chrome',
+      tags: ['api'],
+    },
     handler: function(req, h) {
       server.stop()
       return({ status: 'ok' })
@@ -66,6 +83,10 @@ const init = async () => {
   // is the server up?
   server.route({
     method: 'GET',
+    config: {
+      description: 'Test if the gepetto service is up',
+      tags: ['api'],
+    },
     path: '/_ping',
     handler: function(req, h) {
       return({ status: 'ok' })
@@ -75,6 +96,10 @@ const init = async () => {
   // some debug info (mostly for memory info)
   server.route({
     method: 'GET',
+    config: {
+      description: 'Return "debug-level" information about the gepetto service execution environment',
+      tags: ['api'],
+    },
     path: '/_debug',
     handler: async function(req, h) {
       return({
@@ -93,6 +118,10 @@ const init = async () => {
   // Just go to a URL
   server.route({
     method: 'GET',
+    config: {
+      description: 'Go to a URL without returning page contents',
+      tags: ['api'],
+    },
     path: '/goto',
     handler: async function(req, h) {
       return(await render.goto(req, h, page))
@@ -102,6 +131,10 @@ const init = async () => {
   // Get page metrics
   server.route({
     method: 'GET',
+    config: {
+      description: 'Retrieve page metrics',
+      tags: ['api'],
+    }, 
     path: '/page_metrics',
     handler: async function(req, h) {
       return(await page.metrics())
@@ -111,6 +144,10 @@ const init = async () => {
   // Get page title
   server.route({
     method: 'GET',
+    config: {
+      description: 'Retrieve title of the current page',
+      tags: ['api'],
+    },
     path: '/page_title',
     handler: async function(req, h) {
       return({ title: await page.title() })
@@ -120,6 +157,10 @@ const init = async () => {
   // Get page url
   server.route({
     method: 'GET',
+    config: {
+      description: 'Retrieve URL of the current page',
+      tags: ['api'],
+    },
     path: '/page_url',
     handler: async function(req, h) {
       return({ url : await page.url() })
@@ -129,6 +170,10 @@ const init = async () => {
   // Apply a CSS Selector and return the outerHtml
   server.route({
     method: 'GET',
+    config: {
+      description: 'Select the first HTML element matching the CSS selector and return the `outerHTML` for it',
+      tags: ['api'],
+    },
     path: '/select',
     handler: async function(req, h) {
       const selector = req.query.selector
@@ -140,6 +185,11 @@ const init = async () => {
   // Apply a CSS Selector and return the outerHtml
   server.route({
     method: 'GET',
+    config: {
+      description: 'Select all the HTML elements matching the CSS selector and return the `outerHTML` for the collection',
+      notes: 'this is a note to see how it appears',
+      tags: ['api'],
+    },
     path: '/select_all',
     handler: async function(req, h) {
       const selector = req.query.selector
@@ -154,6 +204,10 @@ const init = async () => {
   // HTML renderer
   server.route({
     method: 'GET',
+    config: {
+      description: 'Visit a URL in a javascript context and return the resultant document HTML',
+      tags: ['api'],
+    },
     path: '/render_html',
     handler: async function(req, h) {
       return(await render.html(req, h, page))
@@ -163,6 +217,10 @@ const init = async () => {
   // HAR renderer
   server.route({
     method: 'GET',
+    config: {
+      description: 'Visit a URL in a javascript context and return HAR JSON with all of the requests metadata',
+      tags: ['api'],
+    },
     path: '/render_har',
     handler: async function(req, h) {
       return(await render.har(req, h, page))
@@ -172,6 +230,10 @@ const init = async () => {
   // PDF renderer
   server.route({
     method: 'GET',
+    config: {
+      description: 'Visit a URL in a javascript context and return the resultant document in PDF form',
+      tags: ['api']
+    },
     path: '/render_pdf',
     handler: async function(req, h) {
       return(await render.pdf(req, h, page))
@@ -181,6 +243,10 @@ const init = async () => {
   // Image renderer
   server.route({
     method: 'GET',
+    config: {
+      description: 'Visit a URL in a javascript context and return the resultant document screenshot',
+      tags: ['api'],
+    },
     path: '/render_png',
     handler: async function(req, h) {
       return(await render.png(req, h, page))
@@ -199,3 +265,5 @@ process.on('unhandledRejection', (err) => {
 })
 
 init()
+
+// swagger-codegen generate -i http://localhost:3000/swagger.json -l html2 -o docs
