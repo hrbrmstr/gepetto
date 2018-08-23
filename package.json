@@ -6,7 +6,8 @@
   "homepage": "https://gitlab.com/hrbrmstr/gepetto",
   "url": "https://gitlab.com/hrbrmstr/gepetto/issues",
   "scripts": {
-    "start": "node index"
+    "start": "node start",
+    "install": "node ./node_modules/puppeteer/install.js"
   },
   "dependencies": {
     "eslint": "^5.4.0",
@@ -18,5 +19,5 @@
     "puppeteer-har": "~1.0.2"
   },
   "repository": "gitlab:hrbrmstr/gepetto",
-  "bin" : { "gepetto" : "./index.js" } 
+  "bin" : { "gepetto" : "./index.js" }
 }
