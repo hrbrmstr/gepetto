@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const hapi = require('hapi')
 const puppeteer = require('puppeteer')
 
@@ -38,12 +40,26 @@ const init = async () => {
   await server.register(require('inert'))
   await server.register(require('hapi-response-utilities'))
   
+  server.events.on('stop', () => {
+    process.exit(0)
+  })
+
   // our interactive page
   server.route({
     method: 'GET',
     path: '/',
     handler: function(req, h) {
       return(h.file('index.html'))
+    }
+  })
+
+  // die die die
+  server.route({
+    method: 'GET',
+    path: '/_stop',
+    handler: function(req, h) {
+      server.stop()
+      return({ status: 'ok' })
     }
   })
 

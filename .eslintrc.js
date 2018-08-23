@@ -15,6 +15,7 @@ module.exports = {
         "document" : true
     },
     "rules": {
+        "no-dupe-keys" : 0,
         "no-unused-vars": 0,
         "no-console": 0,
         "indent": [

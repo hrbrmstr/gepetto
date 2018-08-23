@@ -11,7 +11,6 @@
     "type": "docker",
     "alias": "gepetto.now.sh",
     "files": [
-      "blocked.json",
       "Dockerfile",
       "index.html",
       "index.js",
@@ -27,5 +26,7 @@
     "p-timeout": "~2.0.1",
     "puppeteer": "~1.7.0",
     "puppeteer-har": "~1.0.2"
-  }
+  },
+  "repository": "gitlab:hrbrmstr/gepetto",
+  "bin" : { "gepetto" : "./index.js" } 
 }

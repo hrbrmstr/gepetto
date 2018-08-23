@@ -2,35 +2,42 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gepetto</title>
-<link href="https://fonts.googleapis.com/css?family=Signika:400,700" rel="stylesheet">
 <style>
+
   html {
     display: flex;
     height: 100%;
   }
+
   body {
     margin: auto;
     width: 100%;
     padding: 0 .5em;
   }
+
   body, * {
-    font-family: Signika, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 400;
-    color: #00667A;
+    background-color: #b2b2b2;
+    color: #2b2b2b;
     text-align: center;
   }
+
   body, button, input {
-    font-size: 30px;
+    font-size: 24px;
   }
+
   h1 {
     font-weight: 700;
     font-size: 60px;
-    text-shadow: 0 1px 20px #60E8EE;
     margin: 0 0 .25em;
+    color: #2b2b2b;
   }
+
   * {
     box-sizing: border-box;
   }
+
   input[type=url]{
     display: inline-block;
     width: 90%;
@@ -39,11 +46,28 @@
     margin: .5em;
     border: 0;
     border-radius: 0;
-    background-color: #D7FCFD;
+    outline: 0.5px solid #2b2b2b;
+    background-color: #b2b2b2;
   }
+
   input[type=url]:focus{
-    outline: 3px solid #00667A;
+    outline: 3px solid #2b2b2b;
   }
+
+  a {
+    background-color: #2b2b2b;
+    color: #b2b2b2;
+    padding: 4px 6px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  a:hover, a:active {
+    background-color: #b2b2b2;
+    color: #2b2b2b;
+  }
+
   button {
     border-radius: 0;
     border: 0;
@@ -51,26 +75,30 @@
     margin: .5em;
     width: 90%;
     max-width: 15ex;
-    color: rgba(255,255,255,.75);
-    background-color: #00667A;
-    box-shadow: 0 1px 10px #60E8EE;
+    color: rgba(178,178, 178,.75);
+    background-color: #2b2b2b;
   }
+
   button:hover {
     color: rgba(255,255,255,1);
-    box-shadow: 0 1px 30px #60E8EE;
-    text-shadow: 0 0 5px #60E8EE;
   }
+
   button:active {
     color: rgba(255,255,255,.55);
     transform: scale(.95);
   }
+
   footer {
     font-size: 16px;
   }
+
 </style>
-<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAqFBMVEUAZnr///8ETk5gkJ0BYXFcfn4DWGD2+PgBY3X5+vq5xcVEgJABYnQCXWk8aGgCW2YDUlf8/f3w9PXq7/Dh6eva4+bf5OS6zNK6ys2iu8Odr6+LoaF9lpZKg5NkhIRQdXUCXmwKT0/n7e/X3+HR3eHX3t7K2Ny/0NXAy8uwxcu/ysqywMCbt7+Ztb2hsrKTp6h5k5MxdocabH8OZnlDbW0CX20qXV0SUlLsNjc3AAAAwElEQVQ4y83Rxw6CQBSF4fGI9GYX6fbey/u/mTAhYXMvKxP9VyfhS5jMiD/KWi2Gg1lP6w3XgUWBdquuu73SoE6LaVA3v9Ngegn3mlxnmwQdAKlRrpHPAO/pTORB3w4NFCGOcqY+Cw5yJmBBIOcLNgNu/XL1AYUG8ViuDchfjJaD6ipd+I03GQJqAzBOOaCzwNi5ABz6LaIocXMUeYJ7C5mqCw54WaZUX7mbLPoRsMYT0zQfBWBTUNQEbLVMF1/vA1j8CpImG+ecAAAAAElFTkSuQmCC">
+
+<!-- link rel="shortcut icon" href="" -->
+
 <h1>Gepetto</h1>
-<form id="formtron">
+
+<form id="stringpuller">
   <input type="url" name="url" required placeholder="Enter a URL">
   <br/>
   <button name="screenshot">Take a<br/>Screenshot</button>
@@ -78,51 +106,55 @@
   <button name="render">Render<br/>HTML</button>
   <button name="pdf">Render<br/>PDF</button>
 </form>
-<footer><p>Forked from <a href="https://github.com/cheeaun/puppetron" target="_blank">Puppetron</a> and inspired by <a href="https://splash.readthedocs.io/en/stable/">Splash</a>.</p><p>Documentation and project on <a href="https://github.com/hrbrmstr/gepetto" target="_blank">GitHub</a>.</p></footer>
+
+<footer><p>Modeled after <a href="https://github.com/cheeaun/puppetron" target="_blank" rel="noopener noreferrer">Puppetron</a> and inspired by <a href="https://splash.readthedocs.io/en/stable/" target="_blank" rel="noopener noreferrer">Splash</a>.</p><p>Documentation and project on <a href="https://gitlab.com/hrbrmstr/gepetto" target="_blank" rel="noopener noreferrer">GitLab</a>.</p></footer>
+
 <script>
 function encode(url){
-  return url.replace(/\?.*/i, function(m){
+  return url.replace(/\?.*/i, (m) => {
     return encodeURIComponent(m);
   });
 }
+
 var action;
-formtron.onsubmit = function(e){
+
+stringpuller.onsubmit = (e) => {
+
   e.preventDefault();
-  var url = '/' + action + '/' + encode(formtron.url.value);
+
+  var url = '/' + action + '?url=' + encode(stringpuller.url.value);
   if (action == 'screenshot'){
-    location.href = url + '?width=' + window.innerWidth + '&height=' + window.innerHeight;
+    location.href = url + '&width=' + window.innerWidth + '&height=' + window.innerHeight;
   } else {
     location.href = url;
   }
+
 }
-formtron.screenshot.onclick = function(){
-  action = 'render_jpeg';
-}
-formtron.har.onclick = function(){
-  action = 'render_har';
-}
-formtron.render.onclick = function(){
-  action = 'render_html';
-}
-formtron.pdf.onclick = function(){
-  action = 'render_pdf';
-}
+
+stringpuller.screenshot.onclick = () => action = 'render_png'
+stringpuller.har.onclick = () => action = 'render_har'
+stringpuller.render.onclick = () =>  action = 'render_html'
+stringpuller.pdf.onclick = () => action = 'render_pdf'
+
 var protocol = 'http://';
-formtron.url.onpaste = function(e){
+
+stringpuller.url.onpaste = (e) => {
   const text = e.clipboardData.getData('text');
   if (/https?:\/\//.test(text)) {
     e.preventDefault();
-    formtron.url.value = text;
+    stringpuller.url.value = text;
   }
 }
-formtron.url.onfocus = function(){
-  if (formtron.url.value.trim() == '') {
-    formtron.url.value = protocol;
+
+stringpuller.url.onfocus = () => {
+  if (stringpuller.url.value.trim() == '') {
+    stringpuller.url.value = protocol;
   }
 }
-formtron.url.onblur = function(){
-  if (formtron.url.value.trim() == protocol) {
-    formtron.url.value = '';
+
+stringpuller.url.onblur = () => {
+  if (stringpuller.url.value.trim() == protocol) {
+    stringpuller.url.value = '';
   }
 }
 </script>
