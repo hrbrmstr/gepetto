@@ -1,9 +1,5 @@
-const async = require('async')
-const fs = require('fs')
 const hapi = require('hapi')
-const pTimeout = require('p-timeout')
 const puppeteer = require('puppeteer')
-const puppeteer_har = require('puppeteer-har')
 
 // our render helpers
 const render = require('./lib/render')
