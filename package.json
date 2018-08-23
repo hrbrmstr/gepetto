@@ -2,21 +2,11 @@
   "name": "gepetto",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "(MIT OR Apache-2.0)" ,
+  "homepage": "https://gitlab.com/hrbrmstr/gepetto",
+  "url": "https://gitlab.com/hrbrmstr/gepetto/issues",
   "scripts": {
     "start": "node index"
-  },
-  "now": {
-    "name": "gepetto",
-    "type": "docker",
-    "alias": "gepetto.now.sh",
-    "files": [
-      "Dockerfile",
-      "index.html",
-      "index.js",
-      "package.json",
-      "yarn.lock"
-    ]
   },
   "dependencies": {
     "eslint": "^5.4.0",
