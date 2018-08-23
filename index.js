@@ -65,7 +65,7 @@ const init = async () => {
     path: '/',
     handler: function(req, h) {
       h.file
-      return(h.file('./index.html'))
+      return(h.file(Path.join(__dirname, 'index.html')))
     }
   })
 
