@@ -48,6 +48,6 @@ You can use the `HOST` environment variable to change what IP address the servic
 
 ### API Documentation
 
-There is online API documentation for `gepetto` at the `/documentation` endpoint. i.e., if you're running with the defaults, you can go go <http://localhost:3000/documentation> and see the API documentation there. 
+There is online API documentation for `gepetto` at the `/documentation` endpoint. i.e., if you're running with the defaults, you can go to <http://localhost:3000/documentation> and see the API documentation there. 
 
-Static documenation is avaiable at `docs/index.html` from the module's top-level directory.
+Static documentation is avaiable at `docs/index.html` from the module's top-level directory.
